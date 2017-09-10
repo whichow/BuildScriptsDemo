@@ -1,0 +1,22 @@
+-debug -target:library -nowarn:0169 -langversion:4 -out:Temp/BuildScripts.dll -unsafe -optimize -r:"C:/Program Files/Unity 5.6.2f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/Managed/UnityEngine.dll" -r:"C:/Program Files/Unity 5.6.2f1/Editor/Data/UnityExtensions/Unity/GUISystem/Standalone/UnityEngine.UI.dll" -r:"C:/Program Files/Unity 5.6.2f1/Editor/Data/UnityExtensions/Unity/Networking/Standalone/UnityEngine.Networking.dll"
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpClient.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\Dispatcher\Dispatcher.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\Dispatcher\IDispatcher.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\Enums\ContentReadAction.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\Enums\HttpAction.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\Enums\HttpCompletionOption.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\Example\ExampleSceneManagerController.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpActions\HttpBase.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpActions\HttpDelete.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpActions\HttpGet.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpActions\HttpPatch.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpActions\HttpPost.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpActions\HttpPut.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpContent\ByteArrayContent.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpContent\FormUrlEncodedContent.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpContent\IHttpContent.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpContent\MultiPartContent.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpContent\StreamContent.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\HttpContent\StringContent.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\Messages\HttpResponseMessage.cs
+D:/Workspace/Projects/Demo/LoggerDemo/Assets/HttpClient\Messages\UploadStatusMessage.cs
