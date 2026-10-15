@@ -1,0 +1,34 @@
+name: Ninth Meridian V9 temporary transfer
+on:
+  push:
+    branches:
+      - transfer/ninth-meridian-v9-20261015
+permissions:
+  contents: read
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Fetch verified Blender originals
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p originals
+          base='https://filebin.net/ninth-meridian-v9-dc5e4a'
+          for file in Ninth_Meridian_V9_Cinematic_1080p24.mp4 Ninth_Meridian_V9_Clean_1080p24.mp4 Ninth_Meridian_V9_Vertical_1080x1920.mp4 Ninth_Meridian_v9_Promo.blend; do
+            curl --fail --location --silent --show-error --retry 5 --retry-delay 3 --max-time 240 "$base/$file" -o "originals/$file"
+            test -s "originals/$file"
+          done
+          cd originals
+          echo "51cbdb51067a8a88ce0380fb62cd7c617340c123200bcfe97f766e6320c02cb3  Ninth_Meridian_V9_Cinematic_1080p24.mp4" | sha256sum --check
+          echo "f29c81d7756fd0478da848f1be937a05403a1caffb2de16ec0f757284fca1509  Ninth_Meridian_V9_Clean_1080p24.mp4" | sha256sum --check
+          echo "05dbcac4e9645c294653df1c8327816433d266377b8e6261fa26c11dc4adbd59  Ninth_Meridian_V9_Vertical_1080x1920.mp4" | sha256sum --check
+          echo "415ece1b82b43c47058770fd2e337ef11e1a9badf71e5edeaf3f0845c7efe888  Ninth_Meridian_v9_Promo.blend" | sha256sum --check
+      - name: Transfer verified files as a short-lived artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ninth-meridian-v9-originals
+          path: originals/*
+          compression-level: 0
+          retention-days: 1
