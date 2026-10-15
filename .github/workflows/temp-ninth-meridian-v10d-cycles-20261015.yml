@@ -1,0 +1,35 @@
+name: Ninth Meridian V10D Cycles review relay
+on:
+  push:
+    branches:
+      - transfer/ninth-meridian-v10d-20261015
+permissions:
+  contents: read
+jobs:
+  relay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download only the five visual review files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p review
+          base='https://filebin.net/ninth-meridian-v10d-c12fe18'
+          for n in V10D_Four_Shots_Blender_Cycles.jpg V10D_Same_Camera_Render_Comparison.jpg V9_V10D_Render_Pipeline_Comparison.jpg Cycles_test_36_1920w_64s.png Ninth_Meridian_V10D_Cycles.blend; do
+            curl --fail --location --silent --show-error --retry 5 --retry-delay 3 --max-time 150 "$base/$n" -o "review/$n"
+            test -s "review/$n"
+          done
+          cd review
+          echo '3dd4bfc44cd7288b99071348d64ceec9a44430cf446720b099fc4178240d8fae  V10D_Four_Shots_Blender_Cycles.jpg' | sha256sum -c
+          echo '9942edf64aa8cfd3083a7a5ce0dfce80ab5f19f5c8cac84bd59ddb93ec0f0bd0  V10D_Same_Camera_Render_Comparison.jpg' | sha256sum -c
+          echo '8a8fc2485e99071acbf7f27aa4cd88985fb7dfeca187f54ac18edee78890bb86  V9_V10D_Render_Pipeline_Comparison.jpg' | sha256sum -c
+          echo 'ebda89cf334df0771d3114dda093230c700f031bc1d303e2ec88c69d12b4be90  Cycles_test_36_1920w_64s.png' | sha256sum -c
+          echo 'd9c657075b213918bb590e9b65bfc1fc57593d148602c1a95b39d5d42c4ecb34  Ninth_Meridian_V10D_Cycles.blend' | sha256sum -c
+      - name: Deliver temporary verified review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ninth-meridian-v10d-cycles-review
+          path: review/*
+          compression-level: 0
+          retention-days: 1
